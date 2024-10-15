@@ -5,15 +5,15 @@ import { TodoList } from "./TodoList";
 
 export default function App() {
 	const [todos, setTodos] = useState(() => {
-    const localValue = localStorage.getItem("ITEMS")
-    if (localValue == null) return []
+		const localValue = localStorage.getItem("ITEMS");
+		if (localValue == null) return [];
 
-    return JSON.parse(localValue)
-  });
+		return JSON.parse(localValue);
+	});
 
-  useEffect(() => {
-    localStorage.setItem("ITEMS", JSON.stringify(todos))
-  }, [todos])
+	useEffect(() => {
+		localStorage.setItem("ITEMS", JSON.stringify(todos));
+	}, [todos]);
 
 	function addTodo(title) {
 		setTodos((currenTodos) => {
@@ -46,9 +46,9 @@ export default function App() {
 
 	return (
 		<>
-      <h1 className="header">Todo List 🎯</h1>
+			<h1 className="header">Todo List 🎯</h1>
 			<NewTodoForm onSubmit={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
+			<TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
 		</>
 	);
 }
